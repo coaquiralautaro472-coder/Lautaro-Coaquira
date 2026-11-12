@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Primer Empleo | Guía y Herramientas para Recién Egresados</title>
+  <meta name="description" content="Plataforma interactiva para la inserción laboral de jóvenes recién egresados de la escuela secundaria: generador de CV en vivo, simulador de entrevistas, checklist y portal de vacantes.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ==================== HEADER Y NAVEGACIÓN ==================== -->
+  <header class="app-header" id="header">
+    <div class="header-container">
+      <div class="brand">
+        <div class="brand-logo" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+            <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">Rumbo<strong>Laboral</strong></span>
+          <span class="brand-tagline">De la Secundaria al Trabajo</span>
+        </div>
+      </div>
+
+      <!-- Barra de navegación por pestañas SPA -->
+      <nav class="nav-tabs" role="tablist" aria-label="Navegación principal de módulos">
+        <button class="nav-tab active" role="tab" id="tab-cv-btn" aria-selected="true" aria-controls="modulo-cv" data-target="modulo-cv">
+          <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+            <polyline points="10 9 9 9 8 9"></polyline>
+          </svg>
+          <span>1. Generador de CV</span>
+        </button>
+
+        <button class="nav-tab" role="tab" id="tab-entrevista-btn" aria-selected="false" aria-controls="modulo-entrevistas" data-target="modulo-entrevistas">
+          <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+          </svg>
+          <span>2. Simulador Entrevista</span>
+        </button>
+
+        <button class="nav-tab" role="tab" id="tab-checklist-btn" aria-selected="false" aria-controls="modulo-checklist" data-target="modulo-checklist">
+          <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 11l3 3L22 4"></path>
+            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+          </svg>
+          <span>3. Checklist</span>
+          <span class="checklist-badge-counter" id="checklist-counter-badge">0/12</span>
+        </button>
+
+        <button class="nav-tab" role="tab" id="tab-ofertas-btn" aria-selected="false" aria-controls="modulo-ofertas" data-target="modulo-ofertas">
+          <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+          </svg>
+          <span>4. Ofertas "Primer Empleo"</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ==================== HERO SECTION ==================== -->
+  <section class="hero-section" id="hero">
+    <div class="hero-content">
+      <div class="hero-badge">🎓 Proyecto de Inserción Laboral Juvenil</div>
+      <h1 class="hero-title">¿Recién egresado y sin experiencia laboral? <span class="gradient-text">Aquí empieza tu camino.</span></h1>
+      <p class="hero-description">
+        No tener experiencia formal previa no significa empezar de cero. Tus proyectos de secundaria, habilidades digitales, voluntariados y actitud son tus mejores cartas de presentación. Aprende a plasmarlos, prepárate para tu primera entrevista y da tu primer gran paso con seguridad.
+      </p>
+      <div class="hero-highlights">
+        <div class="highlight-item">
+          <span class="highlight-icon">📄</span>
+          <div>
+            <strong>CV en tiempo real</strong>
+            <small>Exportable a PDF</small>
+          </div>
+        </div>
+        <div class="highlight-item">
+          <span class="highlight-icon">🎯</span>
+          <div>
+            <strong>Simulador interactivo</strong>
+            <small>Preguntas reales y respuestas</small>
+          </div>
+        </div>
+        <div class="highlight-item">
+          <span class="highlight-icon">📋</span>
+          <div>
+            <strong>Checklist progresivo</strong>
+            <small>Guarda tu avance automático</small>
+          </div>
+        </div>
+        <div class="highlight-item">
+          <span class="highlight-icon">💼</span>
+          <div>
+            <strong>Bolsa de práctica</strong>
+            <small>Pasantías y medio tiempo</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CONTENEDOR PRINCIPAL SPA ==================== -->
+  <main class="main-container">
+
+    <!-- =============================================================== -->
+    <!-- MÓDULO 1: GENERADOR DE CV INTERACTIVO PARA PRIMER EMPLEO        -->
+    <!-- =============================================================== -->
+    <section class="module-section active" id="modulo-cv" role="tabpanel" aria-labelledby="tab-cv-btn">
+      <div class="module-header">
+        <div>
+          <span class="module-tag">Módulo 1</span>
+          <h2 class="module-title">Generador de Currículum para Egresados</h2>
+          <p class="module-subtitle">Completa tus datos en el formulario y observa cómo tu CV se diseña en vivo a la derecha. Listo para imprimir o guardar en PDF.</p>
+        </div>
+        <div class="module-actions">
+          <button type="button" class="btn btn-outline" id="btn-load-sample-cv">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            Cargar ejemplo
+          </button>
+          <button type="button" class="btn btn-secondary" id="btn-reset-cv">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
+            Limpiar
+          </button>
+          <button type="button" class="btn btn-primary" id="btn-print-cv">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+            Descargar / Imprimir PDF
+          </button>
+        </div>
+      </div>
+
+      <div class="cv-workspace-grid">
+        <!-- Columna Izquierda: Formulario -->
+        <aside class="cv-editor-card">
+          <div class="card-header">
+            <h3>Tus Datos y Experiencias</h3>
+            <span class="card-caption">Enfocado en fortalezas juveniles</span>
+          </div>
+
+          <form id="cv-form" class="cv-form" novalidate>
+            <!-- 1. Datos Personales -->
+            <fieldset class="form-section">
+              <legend>
+                <span class="section-num">1</span>
+                <span>Datos Personales y Contacto</span>
+              </legend>
+              <div class="form-grid">
+                <div class="form-group full-width">
+                  <label for="input-nombre">Nombre y Apellido *</label>
+                  <input type="text" id="input-nombre" placeholder="Ej. Camila Morales" value="Camila Morales" required>
+                </div>
+                <div class="form-group">
+                  <label for="input-titulo-deseado">Objetivo / Título corto</label>
+                  <input type="text" id="input-titulo-deseado" placeholder="Ej. Egresada Bachiller | En busca de mi primer empleo" value="Egresada Bachiller en Economía | Aspirante a Primer Empleo">
+                </div>
+                <div class="form-group">
+                  <label for="input-email">Correo Electrónico *</label>
+                  <input type="email" id="input-email" placeholder="nombre.profesional@correo.com" value="camila.morales@correo.com" required>
+                </div>
+                <div class="form-group">
+                  <label for="input-telefono">Teléfono / WhatsApp *</label>
+                  <input type="tel" id="input-telefono" placeholder="+54 9 11 2345-6789" value="+54 9 11 4567-8901">
+                </div>
+                <div class="form-group">
+                  <label for="input-ubicacion">Ciudad y Provincia / Región *</label>
+                  <input type="text" id="input-ubicacion" placeholder="Córdoba, Argentina" value="Buenos Aires, Argentina">
+                </div>
+                <div class="form-group full-width">
+                  <label for="input-redes">LinkedIn / Portafolio escolar (opcional)</label>
+                  <input type="text" id="input-redes" placeholder="linkedin.com/in/tu-perfil o link a tus trabajos" value="linkedin.com/in/camilamorales-egresada">
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- 2. Perfil / Objetivo Profesional -->
+            <fieldset class="form-section">
+              <legend>
+                <span class="section-num">2</span>
+                <span>Perfil y Motivación Personal</span>
+              </legend>
+              <div class="form-group">
+                <label for="input-perfil">Presentación breve (3-4 líneas explicativas)</label>
+                <textarea id="input-perfil" rows="3" placeholder="Describe tu entusiasmo, capacidad de aprendizaje rápido y disposición para colaborar en el equipo...">Egresada de secundaria con orientación en Economía y Administración, con gran motivación por iniciar mi desarrollo laboral en áreas administrativas, atención al público o soporte operativo. Destacada por mi proactividad, puntualidad y capacidad para trabajar en equipo, con muchas ganas de aprender continuamente y aportar soluciones.</textarea>
+                <span class="field-hint">💡 Consejo: Enfócate en tu actitud, ganas de aprender y compromiso.</span>
+              </div>
+            </fieldset>
+
+            <!-- 3. Formación Académica -->
+            <fieldset class="form-section">
+              <legend>
+                <span class="section-num">3</span>
+                <span>Educación Secundaria</span>
+              </legend>
+              <div class="form-grid">
+                <div class="form-group full-width">
+                  <label for="input-colegio">Nombre de la Escuela / Instituto *</label>
+                  <input type="text" id="input-colegio" placeholder="Colegio Nacional San Martín" value="Instituto San Martín de Tours">
+                </div>
+                <div class="form-group">
+                  <label for="input-orientacion">Modalidad / Bachillerato</label>
+                  <input type="text" id="input-orientacion" placeholder="Ej. Bachiller en Humanidades / Técnico" value="Bachiller con Orientación en Economía y Gestión">
+                </div>
+                <div class="form-group">
+                  <label for="input-anio-egreso">Año de Egreso o Estado</label>
+                  <input type="text" id="input-anio-egreso" placeholder="Ej. Egresada Diciembre 2024 / En curso" value="Egresada 2024 (Título en trámite)">
+                </div>
+                <div class="form-group full-width">
+                  <label for="input-logro-academico">Logro académico / Mención (opcional)</label>
+                  <input type="text" id="input-logro-academico" placeholder="Ej. Abanderada, Promedio destacado 8.90, Coordinadora estudiantil" value="Promedio general 8.90 | Delegada de curso elegida por pares">
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- 4. Proyectos Escolares y Voluntariado -->
+            <fieldset class="form-section">
+              <legend>
+                <span class="section-num">4</span>
+                <span>Proyectos Escolares y Experiencias Prácticas</span>
+              </legend>
+              <p class="section-description">¡Esto sustituye la falta de experiencia laboral formal! Cuéntale al reclutador qué proyectos lideraste o integraste.</p>
+              
+              <!-- Proyecto 1 -->
+              <div class="sub-form-block">
+                <h4>Proyecto / Voluntariado 1</h4>
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label for="input-proj1-nombre">Nombre de la actividad o proyecto</label>
+                    <input type="text" id="input-proj1-nombre" placeholder="Ej. Microemprendimiento Escolar" value="Feria Anual de Microemprendimientos Escolares">
+                  </div>
+                  <div class="form-group">
+                    <label for="input-proj1-rol">Tu rol / función</label>
+                    <input type="text" id="input-proj1-rol" placeholder="Ej. Tesorera del equipo / Organización" value="Coordinadora de Compras y Presupuesto">
+                  </div>
+                  <div class="form-group full-width">
+                    <label for="input-proj1-desc">Logros y aprendizajes principales</label>
+                    <textarea id="input-proj1-desc" rows="2" placeholder="Qué hicieron, herramientas que usaron y qué resultado obtuvieron...">Planificamos la elaboración y venta de productos sustentables. Gestioné planilla de costos en Excel y coordiné un equipo de 5 compañeros, alcanzando un 30% de rentabilidad donada al comedor comunitario escolar.</textarea>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Proyecto 2 -->
+              <div class="sub-form-block">
+                <h4>Proyecto / Voluntariado 2 (opcional)</h4>
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label for="input-proj2-nombre">Nombre de la actividad o voluntariado</label>
+                    <input type="text" id="input-proj2-nombre" placeholder="Ej. Colecta Solidaria Barrial" value="Campaña Solidaria 'Abrigando Sueños'">
+                  </div>
+                  <div class="form-group">
+                    <label for="input-proj2-rol">Tu rol</label>
+                    <input type="text" id="input-proj2-rol" placeholder="Ej. Difusión y clasificación de donaciones" value="Voluntaria de Clasificación y Logística">
+                  </div>
+                  <div class="form-group full-width">
+                    <label for="input-proj2-desc">Descripción</label>
+                    <textarea id="input-proj2-desc" rows="2" placeholder="Descripción breve...">Recepción y clasificación de más de 300 prendas donadas, organizando el empaque y entrega a familias de la comunidad.</textarea>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- 5. Habilidades Blandas y Técnicas -->
+            <fieldset class="form-section">
+              <legend>
+                <span class="section-num">5</span>
+                <span>Habilidades (Blandas y Herramientas)</span>
+              </legend>
+              <div class="form-group">
+                <label for="input-soft-skills">Habilidades Blandas (Separadas por comas)</label>
+                <input type="text" id="input-soft-skills" placeholder="Ej. Trabajo en equipo, Puntualidad, Comunicación asertiva, Escucha activa" value="Trabajo en equipo, Comunicación asertiva, Proactividad, Resolución de problemas, Puntualidad y responsabilidad">
+              </div>
+              <div class="form-group">
+                <label for="input-hard-skills">Herramientas y Habilidades Técnicas</label>
+                <input type="text" id="input-hard-skills" placeholder="Ej. Microsoft Excel básico, Google Drive, Canva, Manejo de caja" value="Microsoft Office (Excel y Word básico), Google Workspace, Redes Sociales, Canva básico, Manejo de correo electrónico formal">
+              </div>
+              <div class="form-group">
+                <label for="input-idiomas">Idiomas</label>
+                <input type="text" id="input-idiomas" placeholder="Ej. Español (Nativo), Inglés (Intermedio escolar)" value="Español (Nativo), Inglés (Intermedio B1 - lectura y conversación básica)">
+              </div>
+              <div class="form-group">
+                <label for="input-intereses">Cursos breves o Intereses adicionales</label>
+                <input type="text" id="input-intereses" placeholder="Ej. Taller de Atención al Cliente (2024), Fotografía digital" value="Curso online 'Introducción a la Atención al Cliente' (20 hs, 2024)">
+              </div>
+            </fieldset>
+          </form>
+        </aside>
+
+        <!-- Columna Derecha: Vista Previa en Vivo del CV -->
+        <section class="cv-preview-container">
+          <div class="preview-toolbar">
+            <div class="preview-status">
+              <span class="status-indicator"></span>
+              <span>Vista Previa en Vivo (Formato A4 Estándar)</span>
+            </div>
+            <span class="preview-tip">Se actualiza automáticamente al escribir</span>
+          </div>
+
+          <!-- Hoja del CV imprimible -->
+          <div class="cv-sheet-wrapper">
+            <article class="cv-sheet" id="cv-sheet-printable">
+              <!-- Encabezado del CV -->
+              <header class="cv-preview-header">
+                <div class="cv-title-group">
+                  <h1 class="cv-name" id="preview-nombre">Camila Morales</h1>
+                  <p class="cv-headline" id="preview-titulo">Egresada Bachiller en Economía | Aspirante a Primer Empleo</p>
+                </div>
+                <div class="cv-contact-bar">
+                  <span class="cv-contact-item" id="preview-email-item">
+                    <svg class="mini-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    <span id="preview-email">camila.morales@correo.com</span>
+                  </span>
+                  <span class="cv-contact-item" id="preview-telefono-item">
+                    <svg class="mini-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                    <span id="preview-telefono">+54 9 11 4567-8901</span>
+                  </span>
+                  <span class="cv-contact-item" id="preview-ubicacion-item">
+                    <svg class="mini-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    <span id="preview-ubicacion">Buenos Aires, Argentina</span>
+                  </span>
+                  <span class="cv-contact-item" id="preview-redes-item">
+                    <svg class="mini-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                    <span id="preview-redes">linkedin.com/in/camilamorales-egresada</span>
+                  </span>
+                </div>
+              </header>
+
+              <!-- Cuerpo del CV -->
+              <div class="cv-sheet-body">
+                <!-- Perfil -->
+                <section class="cv-block" id="block-perfil">
+                  <h2 class="cv-section-title">Perfil Laboral</h2>
+                  <p class="cv-text" id="preview-perfil">Egresada de secundaria con orientación en Economía y Administración...</p>
+                </section>
+
+                <!-- Formación -->
+                <section class="cv-block" id="block-educacion">
+                  <h2 class="cv-section-title">Formación Académica</h2>
+                  <div class="cv-item">
+                    <div class="cv-item-header">
+                      <h3 class="cv-item-title" id="preview-colegio">Instituto San Martín de Tours</h3>
+                      <span class="cv-item-date" id="preview-anio-egreso">Egresada 2024</span>
+                    </div>
+                    <div class="cv-item-subtitle" id="preview-orientacion">Bachiller con Orientación en Economía y Gestión</div>
+                    <p class="cv-item-note" id="preview-logro-academico">Promedio general 8.90 | Delegada de curso</p>
+                  </div>
+                </section>
+
+                <!-- Proyectos y Experiencias Formativas -->
+                <section class="cv-block" id="block-proyectos">
+                  <h2 class="cv-section-title">Proyectos Escolares y Experiencias Prácticas</h2>
+                  
+                  <div class="cv-item" id="preview-proj1-container">
+                    <div class="cv-item-header">
+                      <h3 class="cv-item-title" id="preview-proj1-nombre">Feria Anual de Microemprendimientos</h3>
+                      <span class="cv-item-badge" id="preview-proj1-rol">Coordinadora de Presupuesto</span>
+                    </div>
+                    <p class="cv-text" id="preview-proj1-desc">Planificamos la elaboración y venta de productos sustentables...</p>
+                  </div>
+
+                  <div class="cv-item" id="preview-proj2-container">
+                    <div class="cv-item-header">
+                      <h3 class="cv-item-title" id="preview-proj2-nombre">Campaña Solidaria 'Abrigando Sueños'</h3>
+                      <span class="cv-item-badge" id="preview-proj2-rol">Voluntaria de Logística</span>
+                    </div>
+                    <p class="cv-text" id="preview-proj2-desc">Recepción y clasificación de más de 300 prendas donadas...</p>
+                  </div>
+                </section>
+
+                <!-- Habilidades y Competencias -->
+                <section class="cv-block" id="block-habilidades">
+                  <h2 class="cv-section-title">Habilidades y Competencias</h2>
+                  <div class="cv-skills-grid">
+                    <div class="skills-column">
+                      <h4>Habilidades Blandas</h4>
+                      <ul class="skills-tags-list" id="preview-soft-skills-tags">
+                        <!-- Generado por JS -->
+                      </ul>
+                    </div>
+                    <div class="skills-column">
+                      <h4>Herramientas y Técnicas</h4>
+                      <ul class="skills-tags-list" id="preview-hard-skills-tags">
+                        <!-- Generado por JS -->
+                      </ul>
+                    </div>
+                  </div>
+                </section>
+
+                <!-- Idiomas y Formación Adicional -->
+                <section class="cv-block" id="block-adicional">
+                  <h2 class="cv-section-title">Idiomas y Capacitación Continua</h2>
+                  <div class="cv-extra-info">
+                    <p><strong>Idiomas:</strong> <span id="preview-idiomas">Español (Nativo), Inglés (Intermedio B1)</span></p>
+                    <p id="preview-cursos-container"><strong>Cursos e Intereses:</strong> <span id="preview-intereses">Curso online 'Atención al Cliente'</span></p>
+                  </div>
+                </section>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </section>
+
+
+    <!-- =============================================================== -->
+    <!-- MÓDULO 2: SIMULADOR DE ENTREVISTA LABORAL                       -->
+    <!-- =============================================================== -->
+    <section class="module-section" id="modulo-entrevistas" role="tabpanel" aria-labelledby="tab-entrevista-btn" hidden>
+      <div class="module-header">
+        <div>
+          <span class="module-tag">Módulo 2</span>
+          <h2 class="module-title">Simulador de Entrevista de Primer Empleo</h2>
+          <p class="module-subtitle">Haz clic en cada tarjeta para desarmar las preguntas más comunes, entender qué busca el reclutador y comparar una respuesta ganadora frente a una que debes evitar.</p>
+        </div>
+        <div class="interview-stats-box">
+          <span class="stat-number" id="interview-count">6</span>
+          <span class="stat-label">Preguntas clave preparadas</span>
+        </div>
+      </div>
+
+      <!-- Filtros de categorías de preguntas -->
+      <div class="interview-filter-bar">
+        <span class="filter-label">Filtrar por foco:</span>
+        <div class="filter-pills" id="interview-filters">
+          <button class="filter-pill active" data-category="todas">Todas</button>
+          <button class="filter-pill" data-category="presentacion">Presentación Personal</button>
+          <button class="filter-pill" data-category="experiencia">Sin Experiencia Previa</button>
+          <button class="filter-pill" data-category="situacional">Situaciones y Retos</button>
+          <button class="filter-pill" data-category="actitud">Actitud y Metas</button>
+        </div>
+      </div>
+
+      <!-- Contenedor dinámico de tarjetas -->
+      <div class="interview-cards-grid" id="interview-cards-container">
+        <!-- Renderizado dinámicamente mediante app.js -->
+      </div>
+    </section>
+
+
+    <!-- =============================================================== -->
+    <!-- MÓDULO 3: CHECKLIST DE PREPARACIÓN LABORAL                      -->
+    <!-- =============================================================== -->
+    <section class="module-section" id="modulo-checklist" role="tabpanel" aria-labelledby="tab-checklist-btn" hidden>
+      <div class="module-header">
+        <div>
+          <span class="module-tag">Módulo 3</span>
+          <h2 class="module-title">Checklist Integral de Preparación</h2>
+          <p class="module-subtitle">Cada paso cuenta. Marca las tareas a medida que las completes. Tu progreso se guarda automáticamente en tu navegador.</p>
+        </div>
+        <div class="module-actions">
+          <button type="button" class="btn btn-outline" id="btn-check-all">Marcar todas</button>
+          <button type="button" class="btn btn-secondary" id="btn-reset-checklist">Reiniciar progreso</button>
+        </div>
+      </div>
+
+      <!-- Panel de Progreso en Vivo -->
+      <div class="checklist-progress-card">
+        <div class="progress-details">
+          <div>
+            <span class="progress-eyebrow">Tu estado actual</span>
+            <h3 class="progress-message" id="checklist-status-message">¡Comenzando tu camino laboral!</h3>
+          </div>
+          <div class="progress-percentage-box">
+            <span class="progress-percentage-value" id="checklist-percentage">0%</span>
+            <span class="progress-fraction" id="checklist-fraction">0 de 12 completadas</span>
+          </div>
+        </div>
+        <div class="progress-track" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="progress-bar-container">
+          <div class="progress-fill" id="checklist-progress-bar" style="width: 0%;"></div>
+        </div>
+      </div>
+
+      <!-- Grupos de tareas -->
+      <div class="checklist-groups-grid" id="checklist-groups-container">
+        <!-- Generado dinámicamente o estructurado con persistencia -->
+      </div>
+    </section>
+
+
+    <!-- =============================================================== -->
+    <!-- MÓDULO 4: PORTAL SIMULADO DE OFERTAS "PRIMER EMPLEO"            -->
+    <!-- =============================================================== -->
+    <section class="module-section" id="modulo-ofertas" role="tabpanel" aria-labelledby="tab-ofertas-btn" hidden>
+      <div class="module-header">
+        <div>
+          <span class="module-tag">Módulo 4</span>
+          <h2 class="module-title">Portal de Vacantes Ficticias: Primer Empleo</h2>
+          <p class="module-subtitle">Practica postulándote a puestos reales diseñados con requisitos accesibles para jóvenes sin experiencia previa: Pasantías, Medio Tiempo y Trainees.</p>
+        </div>
+      </div>
+
+      <!-- Filtros y Búsqueda -->
+      <div class="jobs-controls-card">
+        <div class="search-input-wrapper">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="text" id="job-search-input" placeholder="Buscar por puesto, empresa o palabra clave (ej. atención, ventas, excel, pasantía)...">
+          <button type="button" class="btn-clear-search" id="btn-clear-search" aria-label="Limpiar búsqueda" hidden>&times;</button>
+        </div>
+
+        <div class="jobs-filter-group">
+          <div class="filter-dropdown">
+            <label for="filter-job-type">Modalidad de Contrato:</label>
+            <select id="filter-job-type">
+              <option value="todos">Todos los tipos</option>
+              <option value="Pasantía">Pasantía</option>
+              <option value="Medio Tiempo">Medio Tiempo / Part-time</option>
+              <option value="Trainee">Trainee / Aprendiz</option>
+            </select>
+          </div>
+
+          <div class="filter-dropdown">
+            <label for="filter-job-modality">Formato:</label>
+            <select id="filter-job-modality">
+              <option value="todos">Cualquier formato</option>
+              <option value="Presencial">Presencial</option>
+              <option value="Híbrido">Híbrido</option>
+              <option value="Remoto">Remoto</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Conteo de resultados -->
+      <div class="jobs-counter-bar">
+        <span id="jobs-count-text">Mostrando 6 vacantes disponibles</span>
+      </div>
+
+      <!-- Grid de Vacantes -->
+      <div class="jobs-grid" id="jobs-grid-container">
+        <!-- Se rellena con app.js -->
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== MODAL DE POSTULACIÓN SIMULADA ==================== -->
+  <div class="modal-backdrop" id="job-modal-backdrop" hidden>
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal-close-btn" id="modal-close-btn" aria-label="Cerrar ventana">&times;</button>
+      <div class="modal-content-body" id="modal-content-body">
+        <!-- Contenido inyectado por JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== TOAST NOTIFICACIÓN ==================== -->
+  <div class="toast-notification" id="toast-notification" role="status" aria-live="polite">
+    <span class="toast-icon">✨</span>
+    <span class="toast-message" id="toast-message">Acción realizada</span>
+  </div>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="app-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <h4>RumboLaboral</h4>
+        <p>Proyecto escolar interactivo diseñado para promover los derechos laborales juveniles, la equidad de oportunidades y la confianza de los egresados de secundaria.</p>
+      </div>
+      <div class="footer-tips">
+        <h5>Consejos Rápidos para tu Búsqueda:</h5>
+        <ul>
+          <li>🔹 Tu primer trabajo debe respetar tus horas de estudio si continúas formándote.</li>
+          <li>🔹 Nunca pagues por una postulación ni por supuestos "cursos de ingreso".</li>
+          <li>🔹 Cuida tu presencia digital: revisa qué imágenes o textos públicos compartes.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 RumboLaboral - Desarrollado para Proyecto Intermedio de Inserción Laboral Juvenil.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
