@@ -11,10 +11,12 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (localStorage.getItem('rumbo_hide_announcement') === 'true') {
         announcementBar.classList.add('hidden');
+        document.body.classList.add('announcement-hidden');
     }
 
     closeAnnouncementBtn.addEventListener('click', () => {
         announcementBar.classList.add('hidden');
+        document.body.classList.add('announcement-hidden');
         localStorage.setItem('rumbo_hide_announcement', 'true');
     });
 
