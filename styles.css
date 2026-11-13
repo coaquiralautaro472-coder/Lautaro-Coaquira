@@ -93,6 +93,72 @@ button {
   transition: var(--transition);
 }
 
+/* ==================== BARRA SUPERIOR DE ANUNCIO ==================== */
+.top-announcement-bar {
+  background: var(--grad-primary);
+  color: var(--white);
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  position: relative;
+  z-index: 1001;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.announcement-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  position: relative;
+  text-align: center;
+}
+
+.announcement-badge {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: var(--white);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.05em;
+}
+
+.announcement-text {
+  font-size: 0.85rem;
+}
+
+.announcement-text strong {
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.announcement-close {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--white);
+  font-size: 1.25rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0 0.5rem;
+  opacity: 0.8;
+}
+
+.announcement-close:hover {
+  opacity: 1;
+}
+
+.top-announcement-bar.hidden {
+  display: none;
+}
+
 /* ==================== HEADER Y NAVEGACIÓN ==================== */
 .app-header {
   background-color: rgba(255, 255, 255, 0.8);

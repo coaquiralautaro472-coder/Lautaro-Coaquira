@@ -5,6 +5,19 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+    // === BARRA SUPERIOR DE ANUNCIO ===
+    const announcementBar = document.getElementById('top-announcement');
+    const closeAnnouncementBtn = document.getElementById('btn-close-announcement');
+    
+    if (localStorage.getItem('rumbo_hide_announcement') === 'true') {
+        announcementBar.classList.add('hidden');
+    }
+
+    closeAnnouncementBtn.addEventListener('click', () => {
+        announcementBar.classList.add('hidden');
+        localStorage.setItem('rumbo_hide_announcement', 'true');
+    });
+
     // === CONFIGURACIÓN Y ESTADO INICIAL ===
     const state = {
         currentTab: 'modulo-cv',
